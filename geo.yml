@@ -23,7 +23,8 @@ services:
     labels:
       - "traefik.backend=geoserver"
       - "traefik.port=8080"
-      - "traefik.frontend.rule=Host:geoserver.${DNS_DOMAIN};AddPrefix:/geoserver/"
+      - "traefik.frontend.rule=Host:geoserver.${DNS_DOMAIN}"
       - "traefik.frontend.passHostHeader=true"
       - "traefik.frontend.entryPoints=http,https"
+#";AddPrefix:/geoserver/"
 
