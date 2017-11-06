@@ -1,0 +1,29 @@
+version: '2'
+
+volumes:
+  geoserver-data:
+    driver: local
+
+networks:
+  geo_default:
+    external:
+      name: geo_default
+
+services:
+
+  geoserver:
+    extends:
+      file: docker-compose.yml
+      service: geoserver
+    image: sofwerx/geoserver:x86_64
+    volumes:
+      - geoserver-data:/opt/geoserver/data_dir
+    networks:
+     - geo_default
+    labels:
+      - "traefik.backend=geoserver"
+      - "traefik.port=8080"
+      - "traefik.frontend.rule=Host:geoserver.${DNS_DOMAIN};AddPrefix:/geoserver/"
+      - "traefik.frontend.passHostHeader=true"
+      - "traefik.frontend.entryPoints=http,https"
+
