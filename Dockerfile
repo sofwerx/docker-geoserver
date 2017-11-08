@@ -41,6 +41,9 @@ RUN set -ex && \
 
 ADD run.sh /run.sh
 
+ENV GEOSERVER_HOME /opt/geoserver
+ENV GEOSERVER_DATA /opt/geoserver/data_dir
+
 VOLUME /opt/geoserver/data_dir
 
 CMD /run.sh
