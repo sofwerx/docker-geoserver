@@ -12,6 +12,7 @@ services:
 
   geoserver:
     build: .
+    image: sofwerx/geoserver
     container_name: geoserver
     hostname: geoserver
     restart: always
